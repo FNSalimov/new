@@ -12,10 +12,6 @@ def index(request):
 
 def login(request):
 	if request.method == "POST":
-		t = request.POST.get('t')
-		t = t.split(',')
-		for i in t:
-			print(i)
 		ulogin = request.POST.get('login', '')
 		upassword = request.POST.get('password', '')
 		user = auth.authenticate(username=ulogin, password=upassword)
