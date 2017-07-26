@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/login/', views.login),
     url(r'^api/menu/', views.menu),
+    url(r'^api/order/', views.order),
     url(r'', views.index),
 ]

@@ -10,3 +10,13 @@ class Dish(models.Model):
 
 	def toJSON(self):
 		return {"dish": {"id": self.id, "name": self.name, "description": self.description, "price": self.price}}
+
+class Order(models.Model):
+	dishes = models.ManyToManyField(Dish)
+	total_price = models.FloatField(default=0)
+	operator = models.CharField(max_length=50)
+	time = models.DateTimeField()
+	restor_name = models.CharField(max_length=50)
+
+	def __str__(self):
+		return str(self.id)
