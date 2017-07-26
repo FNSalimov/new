@@ -20,5 +20,6 @@ from restourant import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/login/', views.login),
     url(r'', views.index),
 ]
