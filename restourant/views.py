@@ -34,11 +34,13 @@ def menu(request):
 def order(request):
 	if request.method == "POST":
 		order = Order(operator=request.POST.get('operator'), time=timezone.now(), restor_name=request.POST.get('restor'))
-		dishes = request.POST.get('dishes')
-		dishes = [int(d) for d in dishes.split(',')]
-		print(dishes)
-		for d in dishes:
+		order.save()
+		id_dishes = request.POST.get('dishes')
+		id_dishes = [int(d) for d in id_dishes.split(',')]
+		print(id_dishes)
+		for d in id_dishes:
 			dish = Dish.objects.get(id=d)
+			order.dishes.add(dish)
 			order.total_price += dish.price
 		order.save()
 		print(order.total_price)

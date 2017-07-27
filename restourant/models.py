@@ -20,3 +20,9 @@ class Order(models.Model):
 
 	def __str__(self):
 		return str(self.id)
+
+	def count(self):
+		self.total_price = 0
+		for d in self.dishes.all():
+			self.total_price += d.price
+		return self.total_price
